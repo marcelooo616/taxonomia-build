@@ -22961,11 +22961,19 @@ function enviarEmailCasoSolucionado() {
 
 			const encodedQuery = encodeURIComponent(fullQuery);
 
-			sources.forEach(sourceKey => {
-				const siteUrl = searchSources[sourceKey];
-				const searchUrl = `https://url.de.m.mimecastprotect.com/s/ZjdzCJ84gZTBMwl3Gc6ILuykvqr?domain=google.com ${encodedQuery}`;
-				window.open(searchUrl, '_blank');
-			});
+			// ... (restante do código)
+
+            sources.forEach(sourceKey => {
+                const siteFilter = searchSources[sourceKey]; // Use o filtro de site correto
+                // Monta a query completa para o Bing: termo de busca + filtro de site
+                const fullBingQuery = `${fullQuery} ${siteFilter}`;
+                const encodedBingQuery = encodeURIComponent(fullBingQuery);
+
+                // URL direta de busca do Bing
+                const searchUrl = `https://www.bing.com/search?q=${encodedBingQuery}`;
+                window.open(searchUrl, '_blank');
+            });
+
 		}
 
 
